@@ -1,0 +1,153 @@
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #f2f2f2;
+  overflow:hidden;
+}
+.searchBox{
+  width: 100%;
+  padding: 10px 30rpx;
+  box-sizing: border-box;
+  background: #FF633A;
+  overflow: auto;
+}
+.searchBox .input{
+  width: 590rpx;
+  height: 42px;
+  /* padding: 22rpx 30rpx; */
+  box-sizing: border-box;
+  background: #FFF0EC;
+  border-radius: 10rpx;
+  float: left;
+  position: relative;
+}
+.searchBox .input .searchImg{
+  width: 40rpx;
+  height: 40rpx;
+  float: left;
+  position: relative;
+  top: 50%;
+  margin-top: -20rpx;
+  left: 30rpx;
+}
+.searchBox .input .clearValue{
+  width: 40rpx;
+  height: 40rpx;
+  float: right;
+  position: absolute;
+  top: 50%;
+  margin-top: -20rpx;
+  right: 30rpx;
+}
+.searchBox .input input{
+  width: 400rpx;
+  height:42px;
+  color: #FF633A;
+  font-size: 30rpx;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+  position: relative;
+  top: 0rpx;
+  left: 30rpx;
+}
+.searchBox .input .placeHolder{
+  color: #FF633A;
+}
+.searchBox .btn{
+  /* width: 120rpx;  */
+  height: 84rpx;
+  line-height: 84rpx;
+  text-align: right;
+  font-size: 34rpx;
+  color: #fff;
+  float: right;
+}
+.list{
+  width: 100%;
+  background: #fff;
+  padding:20rpx 30rpx 0;
+  box-sizing: border-box;
+}
+.title{
+  font-size: 30rpx;
+  color: #a1a1a1;
+  text-indent:30rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.theOne{
+  padding: 26rpx 30rpx;
+  overflow: hidden;
+  background: #fff; 
+  border-bottom: 1rpx solid #f2f2f2;
+  position: relative;
+  box-sizing: border-box;
+}
+.theOne .name{
+  font-size: 36rpx;
+  padding-right: 200rpx;
+  color: #333;
+  overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+}
+.theOne .singer{
+  font-size: 26rpx;
+  color: #a1a1a1;
+  margin-top: 16rpx;
+  padding-right: 200rpx;
+overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;  
+}
+.theOne .collect{
+  width: 62rpx;
+  height: 62rpx;
+  position: absolute;
+  top: 50%;
+  margin-top: -31rpx;
+  right: 120rpx;
+}
+.theOne .delete{
+  width: 62rpx;
+  height: 62rpx;
+  position: absolute;
+  top: 50%;
+  margin-top: -31rpx;
+  right: 210rpx;
+}
+.theOne .wechat{
+  width: 62rpx;
+  height: 62rpx;
+  position: absolute;
+  top: 50%;
+  margin-top: -31rpx;
+  right: 30rpx;
+}
+.theOne .wechat image{
+  width: 100%;
+  height: 100%;
+}
+.collection .listShare{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  z-index: 99;
+}
+
+.theOne.active::after{
+  content: '';
+  height: 70rpx;
+  width: 8rpx;
+  background:  #FF633A;
+  top: 50%;
+  margin-top: -35rpx;
+  left: 0;
+  position: absolute;
+}
+.theOne.active .singer,.theOne.active .name{
+  color: #FF633A;
+}

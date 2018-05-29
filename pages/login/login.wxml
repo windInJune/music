@@ -1,0 +1,5 @@
+<view class='tip'>
+  没有登录的情况下，我们无法继续为您提供服务，请使用微信授权登录小程序。
+</view>
+<button class='login' bindtap='login'>微信授权登录</button>
+ <button class='login' bindtap='close'>暂不登录</button> 

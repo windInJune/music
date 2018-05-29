@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/advice/advice",
+    "pages/player/player",
+    "pages/search/search",
+    "pages/singList/singList",
+    "pages/my_singList/my_singList",
+    "pages/play_history/play_history",
+    "pages/collection/collection"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FF633A",
+    "backgroundColor":"#FF633A",
+    "navigationBarTitleText": "舞爱音乐",
+    "navigationBarTextStyle": "light",
+    "enablePullDownRefresh": false
+  }
+}

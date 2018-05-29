@@ -1,0 +1,76 @@
+<template name="goHome">
+  <view wx:if="{{showGoBack}}" style='{{positionx}}:30rpx;top:{{positiony}}px' class='goHome' bindtap="goHome" bindtouchmove='touchmove' bindtouchstart="touchStart" bindtouchend="touchEnd">首页</view>
+</template>
+<template name="loginPage">
+  <view class='loginPage' hidden='{{getButton}}'>
+    <image class='bgimage' src='../../images/loginba.jpeg'></image>
+    <view class='logoBox'>
+      <view class='logo'>
+        <image src='../../images/pagelogin.png'></image>
+      </view>
+      <image class="logotitle" src='../../images/logintitle.png'></image>
+    </view>
+    <view class='agreebutton'>
+      <image src='../../images/agreelogin.png'></image>
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+    </view>
+  </view>
+</template>
+
+<template name="footer">
+  <view class='footer_player'>
+    <view class='singer_cover' bindtap='detail'>
+      <image src='{{musicData.cover || "../../images/bgicon.png"}}'></image>
+    </view>
+    <view class='controls'>
+      <progress percent="{{musicPlayingStatus.progress}}" stroke-width='2' activeColor="#FF633A" backgroundColor='#f1f1f1' />
+      <view class='singer_info'>
+        <view class='sing_name' bindtap='detail'>{{musicData.name || "舞爱音乐"}}</view>
+        <view class='singer_name' bindtap='detail'>未知</view>
+      </view>
+      <view class='btn'>
+        <image class="playBtn" bindtap='play' src='{{musicPlay?"../../images/stop2.png":"../../images/start.png"}}'></image>
+        <image class="showListIcon" bindtap='showList' src='../../images/list.png'></image>
+      </view>
+    </view>
+  </view>
+</template>
+
+
+<template name="musicList">
+  <view class='vedioPlayBox' hidden='{{musicListHidden}}'>
+    <view class='boxTop' bindtap='like' wx:if="{{musiclist.length > 0}}">
+      <image wx:if="{{playstatus == 2}}" src='../../images/2.png'></image>
+      <image wx:elif="{{playstatus == 3}}" src='../../images/3.png'></image>
+      <image wx:else src='../../images/1.png'></image>
+      <text>{{playstatusName}}({{musiclistPage.total_items}}首)</text>
+    </view>
+    <scroll-view bindscrolltolower="loadMusicPlayList" scroll-y class="boxCenter">
+      <view class='isNullBox' wx:if="{{musiclist.length <= 0}}">
+        <image class='isNullBg' src='../../images/null.png'></image>
+        <view>暂无播放记录～</view>
+      </view>
+      <block wx:for="{{musiclist}}" wx:for-index="idx" wx:for-item="item">
+        <view class='ctListBox {{item.mId == musicData.mId?"active":""}}'>
+         <view class='overView'  bindtap='playThisSong' data-src='{{item.mUrl}}' data-mid='{{item.mId}}'></view>
+          <view class='videoName'>{{item.name}}</view>
+          <view class='userName'>未知</view>
+          <view class='deleteBox' hidden='{{item.mId != musicData.mId}}'>
+            <image class='delete' bindtap='deleteMusic' data-mid='{{item.mId}}' src='../../images/deleteicon.png' ></image>
+          </view>
+          <view class='loveBox' hidden='{{item.mId != musicData.mId}}' >
+            <image class='love' data-collect="{{item.collect}}" bindtap='musicCollectCancel' data-index='{{idx}}' data-mid='{{item.mId}}' src='{{item.collect?"../../images/ilove.png":"../../images/love1.png"}}'></image>
+          </view>
+          <view class='shareBox'>
+            <image class='share' src='../../images/wx_gray.png'></image>
+            <button class='musicShare' data-sharetype='9' data-mid='{{item.mId}}' data-name="{{item.name}}" open-type="share"></button>
+          </view>
+        </view>
+      </block>
+       <view class='isLoding' wx:if="{{musiclist.length > 0}}">{{musiclistPage.current == musiclistPage.last?'没有更多了':'正在加载中,请稍等...'}}</view> 
+    </scroll-view>
+    <view class='boxBtm' bindtap='closeAll'>
+      关闭
+    </view>
+  </view>
+</template>

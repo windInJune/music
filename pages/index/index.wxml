@@ -1,0 +1,88 @@
+<import src="../../template/template.wxml" />
+<template is="loginPage" data="{{getButton}}" />
+<template is="footer" data="{{musicData,musicPlayingStatus,musicPlay}}" />
+<template is="musicList" data="{{musicData,musicListHidden,musiclist,playstatus,playstatusName,musiclistPage}}" />
+<view class='cover' bindtap='closeAll' hidden='{{playCoverHidden}}'></view>
+
+<view class='tab'>
+  <view class="left {{id==0?'checked':''}}" bindtap="{{id==1?'check':''}}" data-id='0'>舞曲</view>
+  <view class="right {{id==1?'checked':''}}" bindtap="{{id==0?'check':''}}" data-id='1'>我的</view>
+  <view class="block {{id==0?'toL':'toR'}}" style="left:{{id==0?'0':'50%'}}"></view>
+</view>
+<view class='searchBox' bindtap='search' hidden="{{id!=0}}">
+  <view class='input'>
+    <image src='../../images/search.png'></image>
+    <input placeholder='请输入舞曲名称' placeholder-class='placeHolder' disabled='true'></input>
+  </view>
+</view>
+    <view  style='width:100%;height:46px;background:#FF633A;'></view>
+
+<!--页面切换  -->
+<swiper class='swiper' style='height:{{scrollHeight}}px' current='{{id}}' bindchange='swiperChange'>
+  <!--舞曲  -->
+  <swiper-item>
+    <scroll-view class='box1' scroll-y='true'>
+    <view  style='width:100%;height:52px;background:#FF633A;'></view>
+
+      <view class='banner'>
+        <image catchtap='singList' data-type="1" src="../../images/index_baner.png"></image>
+      </view>
+
+      <view class='title'>
+        <text>每日推荐</text>
+      </view>
+      <view class='list'>
+        <block wx:for="{{dailyRecomment}}" wx:for-index="idx" wx:for-item="item">
+          <view class='theOne'>
+            <image class='singImg' wx:if="{{idx == 0}}" src='{{item.cover || "../../images/c3.png"}}' mode='aspectFill'></image>
+            <image class='singImg' wx:if="{{idx == 1}}" src='{{item.cover || "../../images/c4.png"}}' mode='aspectFill'></image>
+            <image class='singImg' wx:if="{{idx == 2}}" src='{{item.cover || "../../images/c1.png"}}' mode='aspectFill'></image>
+            <image class='singImg'wx:if="{{idx == 3}}"  src='{{item.cover || "../../images/c2.png"}}' mode='aspectFill'></image>
+            <view class='name' catchtap='singList' data-type="1" data-id='{{item.code}}'>
+              <view class='text overhide'>{{item.typeName}}</view>
+              <view class='icon'>
+                <image src='../../images/ear.png'></image>
+                <view class='num'>{{item.hot}}</view>
+              </view>
+            </view>
+            <button class='share' data-sharetype='1' data-mid='{{item.code}}' data-img="{{item.cover}}" data-name='{{item.typeName}}' catchtap="" open-type="share">
+            </button>
+            <image class='shareImage' src='../../images/shareicon.png'></image>
+
+          </view>
+        </block>
+      </view>
+      <view style='width:100%;height:130rpx;background:#f2f2f2;'></view>
+
+    </scroll-view>
+  </swiper-item>
+  <!--我的  -->
+  <swiper-item>
+    <view class='box2'>
+      <view class='userInfo'>
+        <image src='{{userInfo.avatarUrl || "../../images/defaultimg.png"}}'></image>
+        <view>{{userInfo.nickName}}</view>
+      </view>
+      <view class='btn'>
+        <view class='theOne' bindtap='my_singList'>
+          <image src='../../images/list2.png'></image>
+          <view>我的歌单</view>
+        </view>
+        <view class='theOne' bindtap='play_history'>
+          <image src='../../images/history1.png'></image>
+          <view>最近播放</view>
+        </view>
+        <view class='theOne' bindtap='collect'>
+          <image src='../../images/love.png'></image>
+          <view>我的收藏</view>
+        </view>
+      </view>
+      <view class='advice' bindtap='advice'>
+        <image src='../../images/sdicon.png' class='icon'></image>
+        <view>意见反馈</view>
+        <image src='../../images/rightico.png' class='path'></image>
+      </view>
+    </view>
+    <view style='width:100%;height:130rpx;background:#f2f2f2;'></view>
+  </swiper-item>
+</swiper>

@@ -1,0 +1,52 @@
+<import src="../../template/template.wxml" />
+<template is="footer" data="{{musicData,musicPlayingStatus,musicPlay}}"/>
+<template is="musicList" data="{{musiclistPage,musicData,musicListHidden,musiclist,playstatus,playstatusName}}"/>
+  <template is="goHome" data="{{showGoBack,positionx,positiony}}" />
+
+<view class='cover' bindtap='closeAll' hidden='{{playCoverHidden}}'></view>
+
+<view class='searchBox' >
+  <view class='input'>
+    <image src='../../images/search.png' class='searchImg'  bindtap='search'></image>
+    <input placeholder='请输入舞曲名称' placeholder-class='placeHolder'  bindinput='searchInput' confirm-type='search' bindconfirm='search' value='{{searchText}}' focus='true' maxlength='16'></input>
+     <image src='../../images/close.png' hidden='{{searchText.length <= 0}}' class='clearValue' bindtap='clearValue'></image>
+  </view>
+  <view class='btn' bindtap='search' wx:if="{{searchSta}}">搜索</view>
+  <view class='btn' bindtap='searchcanal' wx:else>取消</view>
+</view>
+<view style='height:62px;'></view>
+<!--历史搜索记录  -->
+<scroll-view scroll-y  hidden='{{!searchSta}}'  style="height: {{scrollHeight}}px;"  class='mysinglist' >
+  <view class='history' wx:key='history' >
+    <view class='title'>历史搜索<view class='del' wx:if='{{history.length>0}}' bindtap='delHistory'>清空历史         </view></view>
+    <view wx:if='{{history.length==0}}' style='text-align:center;color:#666;font-size:32rpx;line-height:100rpx;'>没有搜索记录~</view>
+    <block wx:for='{{history}}' wx:key='history'>
+    <view class='sList'>
+      <image class='clock' src='../../images/history.png'></image>
+      <view class='text' data-text='{{item}}' bindtap='hSearch'>{{item}}</view>
+      <image src='../../images/close.png' class='del' data-text='{{item}}' bindtap='del'>x</image>
+    </view>
+    </block>
+  </view>
+      <view style='width:100%;height:130rpx;background:#f2f2f2;'></view>
+
+</scroll-view>
+<!--搜索结果列表  -->
+<scroll-view scroll-y hidden='{{searchSta}}'  style="height: {{scrollHeight}}px;"  class='mysinglist'>
+  <view class='list' >
+    <view class='title'>搜索结果</view>
+    <block wx:for='{{lists}}'  wx:for-index="idx" wx:for-item="item">
+      <view class='theOne {{item.mId == musicData.mId?"active":""}}' bindtap='playMusic'  data-mid='{{item.mId}}'>
+        <!-- <rich-text class='name' nodes='{{item.title}}'></rich-text> -->
+        <view class='name'>{{item.name}}</view>
+        <view class='singer'>未知</view>
+      </view>
+    </block>
+  </view>
+      <view style='height:130rpx;'></view>
+
+</scroll-view>
+
+
+
+

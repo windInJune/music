@@ -1,0 +1,16 @@
+<view class='footer_player'>
+  <view class='singer_cover' bindtap='detail'>
+    <image src='{{musicData.cover || "../../images/defaultimg.png"}}'></image>
+  </view>
+  <view class='controls'>
+    <progress percent="{{musicPlayingStatus.progress}}" stroke-width='2' activeColor="#FF633A" backgroundColor='#f1f1f1'/>
+    <view class='singer_info'>
+      <view class='sing_name'>{{musicData.name || "舞爱音乐"}}</view>
+      <view class='singer_name'>未知</view>
+    </view>
+    <view class='btn'>
+      <image class="playBtn" bindtap='play' src='{{musicPlay?"../../images/stop.png":"../../images/start.png"}}'></image>
+      <image class="showListIcon" src='../../images/list.png'></image>
+    </view>
+  </view>
+</view>

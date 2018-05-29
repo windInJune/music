@@ -1,0 +1,42 @@
+<import src="../../template/template.wxml" />
+<template is="footer" data="{{musicData,musicPlayingStatus,musicPlay}}"/>
+<template is="musicList" data="{{musiclistPage,musicData,musicListHidden,musiclist,playstatus,playstatusName}}"/>
+<template is="goHome" data="{{showGoBack,positionx,positiony}}" />
+
+<view class='cover' bindtap='closeAll' hidden='{{playCoverHidden}}'></view>
+  <view class="singlistnum">歌单{{pages.total_items}}个</view>
+<scroll-view scroll-y class='mysinglist' bindscrolltolower="loadMore">
+  <view style='height:74rpx;'></view>
+  <!-- <view class='list' bindtap="singList"  data-type="1">
+    <view class='theOne'>
+      <image class='img' src='../../images/defaultimg.png'></image>
+      <view class='name'>默认歌单</view>
+      <view class='singer'>1首</view>
+    </view>
+    <view class='wechat'>
+        <image src='../../images/wx_gray.png' class='share'></image>
+        <button class='listShare' data-sharetype='1' data-name="默认歌单"   open-type="share"></button>
+    </view>
+  </view> -->
+  <block wx:for="{{mylists}}" wx:for-index="idx" wx:for-item="item">
+  <view class='list' >
+    <!-- <view class='title'>歌单列表 1 个</view> -->
+    <view class='theOne' bindtap="singList" data-id="{{item.ssId}}" data-name="{{item.name}}" data-time="{{item.time}}" data-type="2" >
+      <image class='img' src="../../images/defaultimg.png"></image>
+      <view class='name'>{{item.name}}</view>
+      <view class='singer'>{{item.musicCount}}首</view>
+    </view>
+    <view class='delete' wx:if="{{item.name != '默认歌单'}}" catchtap='deletelist'   data-index="{{idx}}" data-ssid='{{item.ssId}}'>
+      <image src='../../images/deleteicon.png'></image>
+    </view>
+    <view class='wechat'>
+      <image src='../../images/wx_gray.png' class='share'></image>
+      <button class='listShare' data-sharetype='1'   data-name="{{item.name}}" data-mid='{{item.ssId}}' data-time="{{item.time}}"  open-type="share"></button>
+    </view>
+  </view>
+  </block>
+     <!-- <view class='isLoding' style='border-top:0'>{{page.current == page.last?'没有更多了':'正在加载中,请稍等...'}}</view> -->
+   <view style='height:130rpx;'></view>
+</scroll-view>
+
+<!-- <template is="goHome" /> -->

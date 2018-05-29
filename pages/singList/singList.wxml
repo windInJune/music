@@ -1,0 +1,59 @@
+<import src="../../template/template.wxml" />
+<template is="footer" data="{{musicData,musicPlayingStatus,musicPlay}}" />
+<template is="musicList" data="{{musiclistPage,musicData,musicListHidden,musiclist,playstatus,playstatusName}}" />
+<template is="goHome" data="{{showGoBack,positionx,positiony}}" />
+<view class='cover' bindtap='closeAll' hidden='{{playCoverHidden}}'></view>
+<template is="loginPage" data="{{getButton}}" />
+<view class='info'>
+  <view class='img'>
+    <image class='listImg' src='{{musicType.cover || "../../images/defaultimg2.png"}}'></image>
+    <view class='theOne' wx:if='{{!mysing}}'>
+      <view class='name'>{{musicType.name}}</view>
+      <view class='time'>最新时间：{{musicType.time}}</view>
+    </view>
+    <view class='theOne' wx:if='{{mysing}}'>
+      <view class='name'>{{mysing}}</view>
+      <view class='time'>创建时间：{{singtime}}</view>
+    </view>
+  </view>
+  <view class='btn'>
+    <view class='theOne' bindtap='playAll'>
+      <image src='../../images/play_1.png'></image>
+      <view>全部播放</view>
+    </view>
+    <view class='theOne'>
+      <image class='wxShare' src='../../images/wx.png'></image>
+      <button class='button' data-mid="{{mid}}" data-type="{{singtype}}" data-sharetype='1' open-type="share"></button>
+      <view>微信分享</view>
+    </view>
+  </view>
+</view>
+<view class='titleBox'>
+  <view class='title'>
+    <text>歌曲列表 {{page.total_items}} 首</text>
+  </view>
+</view>
+<scroll-view scroll-y style="height: {{scrollHeight}}px;" class='list' bindscrolltolower="loadMore">
+<view class='isNullBox'  wx:if="{{lists.length <= 0}}">
+        <image class='isNullBg' src='../../images/null.png'></image>   
+         <view>此歌单暂无歌曲～</view>     
+      </view>
+  <block wx:for="{{lists}}" wx:for-index="idx" wx:for-item="item">
+    <view  class='theOne {{item.mId == musicData.mId?"active":""}}'>
+      <view class='sing_name'>{{item.name}}</view>
+      <view class='overView' bindtap='playMusic' data-mid='{{item.mId}}'> </view>
+      <!-- <view class='singer_name'>薛之谦</view> -->
+      <view class='loveBox' hidden='{{item.mId != musicData.mId}}'>
+      <image bindtap='saveMusic'  data-mid='{{item.mId}}' data-iscollect="{{item.collect}}" data-index='{{idx}}' src='{{item.collect?"../../images/ilove.png":"../../images/love1.png"}}' class='getIcon'></image>
+      </view>
+      <view class='shareBox'>
+      <image src='../../images/wx_gray.png' class='share'></image>
+      <button class='listShare' data-sharetype='9' data-mid='{{item.mId}}' data-name="{{item.name}}" open-type="share"></button>
+      </view>
+    </view>
+  </block>
+  <view class='isLoding' wx:if="{{lists.length > 0}}" style='border-top:0'>{{page.current == page.last?'没有更多了':'正在加载中,请稍等...'}}</view> 
+   <view style='height:130rpx;'></view>
+</scroll-view>
+
+<!--底部播放器  -->

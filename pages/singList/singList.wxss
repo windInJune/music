@@ -1,0 +1,205 @@
+page{
+  overflow: hidden;
+}
+.info{
+  width: 100%;
+  background: #fff;
+  position: relative;
+}
+.info .img{
+  width: 100%;
+  height: 130px;
+  position: relative;
+}
+.info .listImg{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 15px;
+  top: 15px
+}
+
+.info .theOne{
+  padding-left: 130px;
+}
+.info .theOne .listImg{
+  width: 200rpx;
+  height: 200rpx;
+  margin-top: 30rpx;
+}
+.info .img .header{
+  width: 142rpx;
+  height: 142rpx;
+  border-radius: 50%;
+  margin-top: 30rpx;
+}
+.info .img .name{
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 34rpx;
+  color: #333;
+  padding-top: 60rpx;
+}
+.info .img .time{
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  color: #a1a1a1;
+  
+}
+.info .btn{
+  width: 100%;
+  height:80px;
+  display: flex;
+  justify-content:center;
+  border-top: 3rpx solid #f2f2f2;
+}
+.info .btn .theOne{
+  margin-top: 30rpx;
+  text-align: center;
+  padding: 0 80rpx;
+  width: 200rpx;
+  position: relative;
+}
+.info .btn .theOne image{
+  width: 62rpx;
+  height: 62rpx;
+  font-size: 30rpx;
+  color: #4e4e4e;
+}
+.info .btn .theOne button{
+  width: 62rpx;
+  height: 62rpx;
+  font-size: 30rpx;
+  color: #4e4e4e;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -31rpx;
+  opacity: 0;
+}
+.info .btn .theOne view{
+  font-size: 28rpx;
+  color: #4e4e4e;
+  margin-top: 4rpx;
+}
+.titleBox{
+  padding: 10px 0;
+  background: #f2f2f2;
+  
+}
+.title{
+  height: 18px;
+  font-size: 34rpx;
+  line-height: 18px;
+  border-left: 21rpx solid #FF633A;
+  position: relative;
+  background: #f2f2f2;
+}
+.title text{
+  padding: 0 20rpx 0 10rpx;
+}
+.title::after{
+  content: '';
+  width: 450rpx;
+  height: 4rpx;
+  background: #FF633A;
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+.list{
+  width: 100%;
+}
+.list .theOne{
+  width: 100%;
+  height: 132rpx;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-bottom: 1rpx solid #f2f2f2;
+  position: relative;
+}
+.list .theOne .overView{
+  position: absolute;
+  height: 132rpx;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+
+
+.list .theOne .loveBox,.list .theOne .shareBox{
+  height: 132rpx;
+  width: 90rpx;
+  position: absolute;
+  top: 0;
+  z-index: 99;
+}
+.list .theOne .loveBox{
+  right: 120rpx;
+}
+.list .theOne .shareBox{
+  right: 30rpx;
+}
+
+
+.list .theOne .sing_name{
+  font-size: 36rpx;
+  margin-top: 24rpx;
+    overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  padding-right: 210rpx;
+}
+.list .theOne .singer_name{
+  font-size: 26rpx;
+  color: #a1a1a1;
+  margin-top: 15rpx;
+}
+.list .theOne .share{
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  top: 50%;
+  right: 15rpx;
+  margin-top: -30rpx;
+  
+}
+
+.list .theOne .listShare{
+    width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  top: 50%;
+  margin-top: -30rpx;
+  right: 15rpx;
+  opacity: 0;
+  z-index: 99;
+}
+.list .theOne .getIcon{
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  top: 50%;
+  right: 15rpx;
+  margin-top: -30rpx;
+}
+page{
+  overflow: hidden;
+}
+
+.list .active::after{
+  content: '';
+  height: 70rpx;
+  width: 8rpx;
+  background:  #FF633A;
+  top: 31rpx;
+  left: 0;
+  position: absolute;
+}
+.list .active .sing_name,.list .active .singer_name{
+  color: #FF633A;
+}

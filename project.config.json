@@ -1,0 +1,83 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.0.2",
+	"appid": "wx209a25269fbe9915",
+	"projectname": "%E5%B9%BF%E5%9C%BA%E8%88%9E%E9%9F%B3%E4%B9%90",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "播放器",
+					"pathName": "pages/player/player",
+					"query": "mid=345"
+				},
+				{
+					"id": -1,
+					"name": "反馈",
+					"pathName": "pages/advice/advice",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/search/search",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的歌单",
+					"pathName": "pages/my_singList/my_singList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "最近播放",
+					"pathName": "pages/play_history/play_history",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的收藏",
+					"pathName": "pages/collection/collection",
+					"query": ""
+				},
+				{
+					"id": 9,
+					"name": "歌单详情",
+					"pathName": "pages/singList/singList",
+					"query": "mid=XT&type=1"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,102 @@
+<import src="../../template/template.wxml" />
+<template is="loginPage" data="{{getButton}}"/>
+<template is="musicList" data="{{musiclistPage,musicData,musicListHidden,musiclist,playstatus,playstatusName}}"/>
+<template is="goHome" data="{{showGoBack,positionx,positiony}}"/>
+
+<!--index.wxml-->
+<image class='bgImg' mode="aspectFill" src='../../images/musicbg.jpg'></image>
+<!-- <scroll-view scroll-y class="container" hidden='true'>
+  <view></view>
+  <view>你陪我步入蝉夏</view>
+  <view>越过城市喧嚣</view>
+  <view>歌声还在游走</view>
+  <view>你榴花般的双眸</view>
+  <view>不见你的温柔</view>
+  <view>丢失花间欢笑</view>
+  <view>岁月无法停留</view>
+  <view>流云的等候</view>
+  <view class='active'>我真的好想你</view>
+  <view>在每一个雨季</view>
+  <view>你选择遗忘的</view>
+  <view>是我最不舍的</view>
+  <view>纸短情长啊</view>
+  <view>道不尽太多涟漪</view>
+  <view>我的故事都是关于你呀</view>
+  <view>怎么会爱上了他</view>
+  <view>并决定跟他回家</view>
+  <view>放弃了我的所有</view>
+  <view>我的一切 无所谓</view>
+  <view>纸短情长啊</view>
+  <view>诉不完当时年少</view>
+  <view>我的故事还是关于你呀</view>
+  <view>我真的好想你</view>
+  <view>在每一个雨季</view>
+  <view>你选择遗忘的</view>
+  <view>是我最不舍的</view>
+  <view>纸短情长啊</view>
+  <view>道不尽太多涟漪</view>
+  <view>我的故事都是关于你呀</view>
+  <view>怎么会爱上了他</view>
+  <view>并决定跟他回家</view>
+  <view>放弃了我的所有</view>
+  <view>我的一切 无所谓</view>
+  <view>纸短情长啊</view>
+  <view>诉不完当时年少</view>
+  <view>我的故事还是关于你呀</view>
+  <view>我的故事还是关于你呀</view>
+</scroll-view> -->
+<view class='pubIcon addIcon' bindtap='showSongSheet'>
+    <image src='../../images/addicon.png'></image>
+</view>
+<view class='pubIcon loveIcon'>
+    <image bindtap='saveMusic' data-iscollect="{{musicData.collect}}" src='{{musicData.collect?"../../images/ilove.png":"../../images/unlove.png"}}'></image>
+</view>
+<view class='pubIcon wxIcon'>
+    <button class='sharePlayer'  open-type="share">></button>
+    <image src='../../images/playshareicon.png'></image>
+</view>
+<view class='musicplay'>
+    <image src='../../images/musicplaybg.png'></image>
+</view>
+<view class='cover' bindtap='closeAll' hidden='{{playCoverHidden}}'></view>
+<view class='addSongListBox' hidden='{{appenMusicToHidden}}'>
+    <view class='boxTop'>添加到</view>
+    <scroll-view bindscrolltolower="songSheetLoadMore" scroll-y class="boxCenter">
+      <view class='ctListTop' bindtap='addSongSheet'>
+           <image src='../../images/add.png'></image>      
+          <text>新建歌单</text>
+      </view>
+      <!-- <view class='ctListBox'>
+          我的收藏
+      </view> -->
+         <view  wx:for="{{songSheetlist}}" wx:for-index="idx" wx:for-item="item" class='ctListBox' bindtap='addMusicToSongSheet' data-ssid='{{item.ssId}}'> 
+          {{item.name}}
+          </view> 
+    </scroll-view>
+    <view class='boxBtm' bindtap='closeAll' >
+        关闭
+    </view>
+</view>
+
+<view class='addSongList'hidden='{{addSongSheetHidden}}'>
+    <view class='addSongListName'>新建歌单</view>
+    <input bindblur="addSongBlur" placeholder='请输入歌单名' ></input>
+     <view class='sureBox'>
+        <view class='left' bindtap='cannalAddSongSheet'>取消</view>
+        <view class='right' bindtap='sureAddSongSheet'>确定</view>
+     </view>  
+</view>
+<view class='footer'>
+  <view class='top'>
+    <view class='time'>{{musicPlayingStatus.timerBegin}}</view>
+    <progress percent="{{musicPlayingStatus.progress}}" stroke-width='2' color="#FF633A" backgroundColor='#f1f1f1' />
+    <view class='time'>{{musicPlayingStatus.timerEnd}}</view>
+  </view>
+  <view class='btn'>
+    <image class='lickIcon' bindtap='like' src="{{playstatusImg}}"></image>
+    <image class='prevIcon' bindtap='prev' src='../../images/prev.png'></image>
+    <image class='playIcon' bindtap='play' src="{{musicPlay?'../../images/stop.png':'../../images/play_2.png'}}"></image>
+    <image class='nextIcon' bindtap='next' src='../../images/next.png'></image>
+    <image class='listIcon' bindtap='showList' src='../../images/list1.png'></image>
+  </view>
+</view>
